@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Opening</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== SCENE ===== */
+body {
+    height: 100vh;
+    background: linear-gradient(#ffd1dc, #ffc0cb);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* ===== BACKGROUND BUBBLES ===== */
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    background: rgba(255,255,255,0.35);
+    border-radius: 50%;
+    animation: float 14s infinite ease-in;
+}
+
+.bubble:nth-child(1) { left: 20%; width: 40px; height: 40px; animation-delay: 0s; }
+.bubble:nth-child(2) { left: 45%; width: 25px; height: 25px; animation-delay: 4s; }
+.bubble:nth-child(3) { left: 65%; width: 50px; height: 50px; animation-delay: 7s; }
+.bubble:nth-child(4) { left: 80%; width: 30px; height: 30px; animation-delay: 10s; }
+
+@keyframes float {
+    from { transform: translateY(0); opacity: 1; }
+    to   { transform: translateY(-120vh); opacity: 0; }
+}
+
+/* ===== CHARACTER ===== */
+.character {
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: idle 3s ease-in-out infinite;
+}
+
+@keyframes idle {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -6px); }
+}
+
+.character img {
+    width: 120px;              /* BESAR KECIL KARAKTER */
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* ===== CHAT BUBBLE ===== */
+.chat {
+    position: absolute;
+    right: -160px;
+    top: 10px;
+    background: white;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14px;
+    white-space: nowrap;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    opacity: 0;
+    animation: chatPop 1.5s ease forwards;
+    animation-delay: 1.5s;
+}
+
+.chat::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 18px;
+    border: 10px solid transparent;
+    border-right-color: white;
+}
+
+@keyframes chatPop {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+
+    <!-- bubbles -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <!-- character -->
+    <div class="character">
+        <img src="character.png" alt="pixel character">
+
+        <div class="chat">
+            halo kamu 👋
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
